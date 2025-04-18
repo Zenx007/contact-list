@@ -8,10 +8,10 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>spring.boot.contact</groupId>
-	<artifactId>list</artifactId>
+	<groupId>spring.boot.list</groupId>
+	<artifactId>contact</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>list</name>
+	<name>contact</name>
 	<description>A contact list</description>
 	<url/>
 	<licenses>

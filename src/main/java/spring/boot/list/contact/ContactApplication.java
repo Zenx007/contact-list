@@ -1,13 +1,13 @@
-package spring.boot.contact.list;
+package spring.boot.list.contact;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ListApplication {
+public class ContactApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ListApplication.class, args);
+		SpringApplication.run(ContactApplication.class, args);
 	}
 
 }

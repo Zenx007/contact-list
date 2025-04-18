@@ -1,10 +1,10 @@
-package spring.boot.contact.list;
+package spring.boot.list.contact;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ListApplicationTests {
+class ContactApplicationTests {
 
 	@Test
 	void contextLoads() {
