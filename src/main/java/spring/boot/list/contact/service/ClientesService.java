@@ -1,0 +1,36 @@
+package spring.boot.list.contact.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import spring.boot.list.contact.dto.ClientesDTO;
+import spring.boot.list.contact.model.Clientes;
+import spring.boot.list.contact.model.Contato;
+import spring.boot.list.contact.repository.ClientesRepository;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class ClientesService {
+
+    @Autowired
+    private ClientesRepository clientesRepository;
+
+    public Clientes salvarClientes(ClientesDTO dto) {
+
+        Clientes clientes = new Clientes();
+        clientes.setNome(dto.getNome());
+
+        if (dto.getContatos() != null && dto.getContatos().size() >0){
+
+            List<Contato> contatos = dto.getContatos().stream().map(c ->{
+                Contato contato = new Contato();
+                contato.setTelefone(c.getTelefone());
+                contato.setEmail(c.getEmail());
+                contato.setClientes(clientes);
+                return contato;
+            }).collect(Collectors.toList());
+            clientes.setContatos(contatos);
+        }
+        return clientesRepository.save(clientes);
+    }
+
+}
