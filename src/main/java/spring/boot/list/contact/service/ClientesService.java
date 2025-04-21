@@ -2,6 +2,7 @@ package spring.boot.list.contact.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import spring.boot.list.contact.dto.ClientesDTO;
+import spring.boot.list.contact.dto.ClientesResponseDTO;
 import spring.boot.list.contact.model.Clientes;
 import spring.boot.list.contact.model.Contato;
 import spring.boot.list.contact.repository.ClientesRepository;
