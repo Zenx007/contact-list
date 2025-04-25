@@ -47,5 +47,9 @@ public class ClientesService {
             contatoDTO.setEmail(c.getEmail());
             return contatoDTO;
     }).collect(Collectors.toList());
+        dto.setContatos(contatos);
+
+
+        return dto;
 
 }
