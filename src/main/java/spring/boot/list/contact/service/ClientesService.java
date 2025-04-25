@@ -3,6 +3,7 @@ package spring.boot.list.contact.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import spring.boot.list.contact.dto.ClientesDTO;
 import spring.boot.list.contact.dto.ClientesResponseDTO;
+import spring.boot.list.contact.dto.ContatoResponseDTO;
 import spring.boot.list.contact.model.Clientes;
 import spring.boot.list.contact.model.Contato;
 import spring.boot.list.contact.repository.ClientesRepository;
@@ -38,7 +39,6 @@ public class ClientesService {
         ClientesResponseDTO dto = new ClientesResponseDTO();
         dto.setId(cliente.getId());
         dto.setNome(cliente.getNome());
-    }
 
         List<ContatoResponseDTO> contatos = dto.getContatos().stream().map(c ->{
             ContatoResponseDTO contatoDTO = new ContatoResponseDTO();
