@@ -40,6 +40,12 @@ public class ClientesService {
         dto.setNome(cliente.getNome());
     }
 
-
+        List<ContatoResponseDTO> contatos = dto.getContatos().stream().map(c ->{
+            ContatoResponseDTO contatoDTO = new ContatoResponseDTO();
+            contatoDTO.setId(c.getId());
+            contatoDTO.setTelefone(c.getTelefone());
+            contatoDTO.setEmail(c.getEmail());
+            return contatoDTO;
+    }).collect(Collectors.toList());
 
 }
