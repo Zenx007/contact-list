@@ -35,7 +35,12 @@ public class ClientesService {
         return clientesRepository.save(clientes);
     }
 
-    public List<ClientesResponseDTO> toDTO(Clientes cliente) {
+    public List<ClientesResponseDTO> listarTodos() {
+        return clientesRepository.findAll().stream().map(this::toDTO).Collectors.toList());
+    }
+}
+
+    private ClientesResponseDTO toDTO(Clientes cliente) {
         ClientesResponseDTO dto = new ClientesResponseDTO();
         dto.setId(cliente.getId());
         dto.setNome(cliente.getNome());
