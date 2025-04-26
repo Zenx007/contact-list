@@ -11,6 +11,8 @@ import spring.boot.list.contact.repository.ClientesRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Nodes.collect;
+
 public class ClientesService {
 
     @Autowired
@@ -39,7 +41,20 @@ public class ClientesService {
         return clientesRepository.findAll().stream().map(this::toDTO).Collectors.toList());
     }
 }
+public List<ContatoResponseDTO> listarContatosPorCliente(Long clienteId) {
 
+    Clientes cliente = clientesRepository.findById(clienteId)
+                        .orElseThrow(()-> new RuntimeException("Cliente não encontrado"));
+
+    return cliente.getContatos().stream().map(c-> {
+        ContatoResponseDTO contatoDTO = new ContatoResponseDTO();
+        dto.setId(c.getId());
+        dto.setTelefone(c.getTelefone());
+        dto.setEmail(c.getEmail());
+        return contatoDTO;
+
+    }).collect(Collectors.toList());
+}
     private ClientesResponseDTO toDTO(Clientes cliente) {
         ClientesResponseDTO dto = new ClientesResponseDTO();
         dto.setId(cliente.getId());
