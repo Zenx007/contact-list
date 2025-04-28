@@ -38,7 +38,7 @@ public class ClientesService {
     }
 
     public List<ClientesResponseDTO> listarTodos() {
-        return clientesRepository.findAll().stream().map(this::toDTO).Collectors.toList());
+        return clientesRepository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 }
 public List<ContatoResponseDTO> listarContatosPorCliente(Long clienteId) {
