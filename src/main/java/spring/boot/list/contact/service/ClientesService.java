@@ -1,6 +1,7 @@
 package spring.boot.list.contact.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import spring.boot.list.contact.dto.ClientesDTO;
 import spring.boot.list.contact.dto.ClientesResponseDTO;
 import spring.boot.list.contact.dto.ContatoResponseDTO;
@@ -8,9 +9,11 @@ import spring.boot.list.contact.model.Clientes;
 import spring.boot.list.contact.model.Contato;
 import spring.boot.list.contact.repository.ClientesRepository;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ClientesService {
 
     @Autowired
@@ -65,7 +68,8 @@ public class ClientesService {
             contatoDTO.setEmail(c.getEmail());
             return contatoDTO;
         }).collect(Collectors.toList());
-        dto.setContatos(contatos);
+        dto.setContatos(Collections.singletonList(contatos));
+
 
 
         return dto;
