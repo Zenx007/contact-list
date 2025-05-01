@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import spring.boot.list.contact.dto.ClientesDTO;
 import spring.boot.list.contact.dto.ClientesResponseDTO;
 import spring.boot.list.contact.dto.ContatoResponseDTO;
 import spring.boot.list.contact.model.Clientes;
@@ -22,19 +23,18 @@ public class ClienteController {
     private ClientesService clientesService;
 
     @PostMapping
-    public String criar (@RequestBody String entity) {
-
-        Clientes clienteSalva = ClientesService.salvarCliente(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalva);
+    public ResponseEntity<Clientes> criar (@RequestBody ClientesDTO dto) {
+        Clientes clienteSalvo = clientesService.salvarCliente(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
     }
 
     @GetMapping
     public ResponseEntity<List<ClientesResponseDTO>>listarTodos(){
-        return ok(clientesService.listarTodos());
+        return ResponseEntity.ok(clientesService.listarTodos());
     }
 
     @GetMapping("/{id}/contatos")
-    public ResponseEntity<List<ContatoResponseDTO>> listarTodos(@PathVariable Long id) {
+    public ResponseEntity<List<ContatoResponseDTO>> listarContatos(@PathVariable Long id) {
 
         return ResponseEntity.ok(clientesService.listarContatosPorCliente(id));
     }
