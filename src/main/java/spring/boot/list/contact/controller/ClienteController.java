@@ -6,10 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import spring.boot.list.contact.dto.ClientesResponseDTO;
+import spring.boot.list.contact.dto.ContatoResponseDTO;
 import spring.boot.list.contact.model.Clientes;
 import spring.boot.list.contact.service.ClientesService;
 
 import java.util.List;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("/clientes")
@@ -27,8 +30,13 @@ public class ClienteController {
 
     @GetMapping
     public ResponseEntity<List<ClientesResponseDTO>>listarTodos(){
-        return ResponseEntity.ok(clientesService.listarTodos());
+        return ok(clientesService.listarTodos());
+    }
 
+    @GetMapping("/{id}/contatos")
+    public ResponseEntity<List<ContatoResponseDTO>> listarTodos(@PathVariable Long id) {
+
+        return ResponseEntity.ok(clientesService.listarContatosPorCliente(id));
     }
 
 }
