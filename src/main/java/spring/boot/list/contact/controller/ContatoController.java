@@ -28,7 +28,7 @@ public class ContatoController {
     @PostMapping
     public ResponseEntity<?> criar(@RequestBody ContatoDTO dto) {
 
-        Optional <Clientes> clientesOpt= clientesRepository.findById(dto.getClienteId);
+        Optional <Clientes> clientesOpt= clientesRepository.findById(dto.getClienteId());
         if (clientesOpt.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente não encontrado");
         }
